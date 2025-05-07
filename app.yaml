@@ -1,13 +1,2 @@
-runtime: python39  # Specifies the Python runtime version
-
-entrypoint: python main.py  # The command to start your app
-
-env_variables:
-  # Any environment variables if necessary (e.g., settings, API keys, etc.)
-  EXAMPLE_VARIABLE: "value"
-
-instance_class: F2  # The size of the instance (optional, based on your needs)
-
-handlers:
-- url: /.*  # Handle all URLs
-  script: auto  # Automatically determine which script to use
+runtime: python39
+entrypoint: gunicorn -w 1 -b :$PORT main:app
